@@ -5,149 +5,142 @@
 ![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite)
 ![Cloudflare](https://img.shields.io/badge/Cloudflare-Workers-F38020?logo=cloudflare)
 
-> **Convertisseur bidirectionnel en temps réel** entre HTML, Markdown et le format WhatsApp.
+> **Real-time bidirectional converter** between HTML, Markdown and WhatsApp formatting.
 
-## ✨ Fonctionnalités
+## ✨ Features
 
-- 🔄 **Conversion bidirectionnelle** - Convertissez dans les deux sens entre les trois formats
-- ⚡ **Temps réel** - Les conversions s'effectuent instantanément pendant la saisie
-- ✏️ **Éditeur WYSIWYG** - Éditeur HTML riche avec barre d'outils complète
-- 📝 **Support Markdown complet** - Headers, listes, gras, italique, barré, liens, code...
-- 💬 **Format WhatsApp** - Compatible avec le formatage natif WhatsApp (`*gras*`, `_italique_`, `~barré~`)
-- 📋 **Copie en un clic** - Copiez facilement le résultat dans le presse-papiers
-- 🌙 **Interface moderne** - Design sombre et épuré
+- 🔄 **Bidirectional Conversion** - Convert seamlessly between all three formats
+- ⚡ **Real-time** - Conversions happen instantly as you type
+- ✏️ **WYSIWYG Editor** - Rich HTML editor with full toolbar
+- 📝 **Full Markdown Support** - Headers, lists, bold, italic, strikethrough, links, code...
+- 💬 **WhatsApp Format** - Compatible with native WhatsApp formatting (`*bold*`, `_italic_`, `~strikethrough~`, `` `code` ``)
+- 📋 **One-click Copy** - Easily copy the output to clipboard
+- 🌙 **Modern Interface** - Clean dark theme design
 
-## 🚀 Démo
+## 🚀 Demo
 
-🔗 **[Accéder à l'application](https://html2md.jbahu.workers.dev)**
+🔗 **[Try it live](https://html2md.jbahu.fr)**
 
 ## 📦 Installation
 
-### Prérequis
+### Prerequisites
 
-- Node.js 18+ ou Bun
-- Compte Cloudflare (pour le déploiement)
+- Node.js 18+ or Bun
+- Cloudflare account (for deployment)
 
-### Installation locale
+### Local Development
 
 ```bash
-# Cloner le repository
+# Clone the repository
 git clone https://github.com/Smax2k/HTML-2-Markdown-2-WhatsApp.git
 cd HTML-2-Markdown-2-WhatsApp
 
-# Installer les dépendances
+# Install dependencies
 npm install
-# ou
+# or
 bun install
 
-# Lancer le serveur de développement
+# Start development server
 npm run dev
-# ou
+# or
 bun run dev
 ```
 
-L'application sera accessible sur `http://localhost:5173`
+The app will be available at `http://localhost:5173`
 
-## ☁️ Déploiement sur Cloudflare Workers
+## ☁️ Deploy to Cloudflare Workers
 
-### 1. Configurer Wrangler
+### 1. Configure Wrangler
 
-Copiez le fichier exemple et ajoutez vos informations :
+Copy the example file and add your credentials:
 
 ```bash
 cp wrangler.toml.example wrangler.toml
 ```
 
-Éditez `wrangler.toml` et remplacez :
-- `VOTRE_ACCOUNT_ID_ICI` par votre Account ID Cloudflare
+Edit `wrangler.toml` and replace:
+- `YOUR_ACCOUNT_ID_HERE` with your Cloudflare Account ID
 
-### 2. Déployer
+### 2. Deploy
 
 ```bash
 npm run deploy
-# ou
+# or
 bun run deploy
 ```
 
-## 🛠️ Scripts disponibles
+## 🛠️ Available Scripts
 
-| Commande | Description |
-|----------|-------------|
-| `npm run dev` | Lance le serveur de développement |
-| `npm run build` | Build de production |
-| `npm run deploy` | Build + déploiement sur Cloudflare |
-| `npm run preview` | Prévisualise le build de production |
-| `npm run lint` | Vérifie le code avec ESLint |
-| `npm run git` | Commit et push rapide |
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Production build |
+| `npm run deploy` | Build + deploy to Cloudflare |
+| `npm run preview` | Preview production build locally |
+| `npm run lint` | Run ESLint |
 
-## 📖 Utilisation
+## 📖 Usage
 
-### Modes d'entrée
+### Input Modes
 
-1. **HTML** - Utilisez l'éditeur WYSIWYG pour formater votre texte
-2. **Markdown** - Écrivez directement en syntaxe Markdown
-3. **WhatsApp** - Collez du texte formaté WhatsApp
+1. **HTML** - Use the WYSIWYG editor to format your text
+2. **Markdown** - Write directly in Markdown syntax
+3. **WhatsApp** - Paste WhatsApp formatted text
 
-### Modes de sortie
+### Output Modes
 
-- **Markdown** - Format Markdown standard (GFM)
-- **WhatsApp** - Format compatible avec WhatsApp
-- **HTML** - Code HTML généré
+- **Markdown** - Standard Markdown format (GFM)
+- **WhatsApp** - WhatsApp-compatible format
+- **HTML** - Generated HTML code
 
-### Correspondance des formats
+### Format Mapping
 
-| Format | Gras | Italique | Barré | Code |
-|--------|------|----------|-------|------|
+| Format | Bold | Italic | Strikethrough | Code |
+|--------|------|--------|---------------|------|
 | Markdown | `**text**` | `*text*` | `~~text~~` | `` `code` `` |
 | WhatsApp | `*text*` | `_text_` | `~text~` | `` `code` `` |
 | HTML | `<b>text</b>` | `<i>text</i>` | `<s>text</s>` | `<code>code</code>` |
 
-## 🧰 Technologies utilisées
+## 🧰 Tech Stack
 
-- **[React 19](https://react.dev/)** - Framework UI
-- **[Vite 7](https://vite.dev/)** - Build tool ultra-rapide
-- **[React Quill](https://github.com/zenoamaro/react-quill)** - Éditeur WYSIWYG
-- **[Turndown](https://github.com/mixmark-io/turndown)** - Conversion HTML → Markdown
-- **[Marked](https://github.com/markedjs/marked)** - Conversion Markdown → HTML
-- **[Cloudflare Workers](https://workers.cloudflare.com/)** - Hébergement edge
+- **[React 19](https://react.dev/)** - UI Framework
+- **[Vite 7](https://vite.dev/)** - Lightning-fast build tool
+- **[React Quill](https://github.com/zenoamaro/react-quill)** - WYSIWYG Editor
+- **[Turndown](https://github.com/mixmark-io/turndown)** - HTML → Markdown conversion
+- **[Marked](https://github.com/markedjs/marked)** - Markdown → HTML conversion
+- **[Cloudflare Workers](https://workers.cloudflare.com/)** - Edge hosting
 
-## 📁 Structure du projet
+## 📁 Project Structure
 
 ```
 html2markdown/
 ├── src/
-│   ├── App.jsx          # Composant principal
-│   ├── App.css          # Styles de l'application
-│   ├── index.css        # Styles globaux
-│   └── main.jsx         # Point d'entrée React
+│   ├── App.jsx          # Main component
+│   ├── App.css          # Application styles
+│   ├── index.css        # Global styles
+│   └── main.jsx         # React entry point
 ├── worker/
 │   └── src/
 │       └── index.ts     # Cloudflare Worker
-├── public/              # Assets statiques
-├── wrangler.toml.example # Configuration Cloudflare (exemple)
+├── public/              # Static assets
+├── wrangler.toml.example # Cloudflare config template
 └── package.json
 ```
 
-## 🤝 Contribution
+## 🤝 Contributing
 
-Les contributions sont les bienvenues ! N'hésitez pas à :
+Contributions are welcome! Feel free to:
 
-1. Fork le projet
-2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
-3. Commit vos changements (`git commit -m 'Add AmazingFeature'`)
-4. Push sur la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrir une Pull Request
+1. Fork the project
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## 📄 License
 
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
-
-## 👤 Auteur
-
-**Jonathan Bahu**
-
-- GitHub: [@Smax2k](https://github.com/Smax2k)
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-⭐ Si ce projet vous est utile, n'hésitez pas à lui donner une étoile !
+⭐ If you find this project useful, please give it a star!

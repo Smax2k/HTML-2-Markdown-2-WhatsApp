@@ -1,6 +1,6 @@
 # ============================================================================
-# CONFIGURATION CLOUDFLARE WORKERS - EXEMPLE
-# Copier ce fichier vers wrangler.toml et remplir vos informations
+# CLOUDFLARE WORKERS CONFIGURATION - EXAMPLE
+# Copy this file to wrangler.toml and fill in your credentials
 # ============================================================================
 
 name = "html2md"
@@ -8,13 +8,13 @@ main = "worker/src/index.ts"
 compatibility_date = "2025-01-13"
 compatibility_flags = ["nodejs_compat"]
 
-# ⚠️ REMPLACER PAR VOTRE ACCOUNT ID CLOUDFLARE
-account_id = "VOTRE_ACCOUNT_ID_ICI"
+# ⚠️ REPLACE WITH YOUR CLOUDFLARE ACCOUNT ID
+account_id = "YOUR_ACCOUNT_ID_HERE"
 
-# Activer l'URL workers.dev
+# Enable workers.dev URL
 workers_dev = true
 
-# Activer les Preview URLs
+# Enable Preview URLs
 preview_urls = true
 
 # ============================================================================
@@ -23,13 +23,13 @@ preview_urls = true
 [assets]
 directory = "./dist"
 binding = "ASSETS"
-not_found_handling = "single-page-application"  # Pour SPA React
+not_found_handling = "single-page-application"  # For React SPA
 
 # ============================================================================
-# ROUTING ET DOMAINES (optionnel)
+# ROUTING AND DOMAINS (optional)
 # ============================================================================
 
-# Décommentez et modifiez si vous avez un domaine personnalisé
+# Uncomment and modify if you have a custom domain
 # [[routes]]
-# pattern = "votre-domaine.com"
+# pattern = "your-domain.com"
 # custom_domain = true
