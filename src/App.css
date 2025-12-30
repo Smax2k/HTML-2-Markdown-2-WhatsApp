@@ -318,3 +318,45 @@ body {
     margin-top: 0.5rem;
   }
 }
+
+/* Footer */
+.app-footer {
+  text-align: center;
+  padding: 2rem 0 1rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.footer-text {
+  color: #5a5a6a;
+  font-size: 0.85rem;
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #8888a0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.github-link:hover {
+  color: #e8e8e8;
+}
+
+.github-link svg {
+  transition: transform 0.3s ease;
+}
+
+.github-link:hover svg {
+  transform: scale(1.1);
+}
