@@ -35,6 +35,28 @@ function App() {
         return '~~' + content + '~~'
       }
     })
+    service.addRule('listItem', {
+      filter: 'li',
+      replacement: function (content, node, options) {
+        content = content
+          .trim()
+          .replace(/\n+$/g, '') // remove trailing newlines
+          .replace(/\n/gm, '\n    ') // indent internal newlines
+
+        let prefix = options.bulletListMarker + ' '
+        const parent = node.parentNode
+
+        if (parent.nodeName === 'OL') {
+          const start = parent.getAttribute('start')
+          const index = Array.prototype.indexOf.call(parent.children, node)
+          prefix = (start ? Number(start) + index : index + 1) + '. '
+        }
+
+        return (
+          prefix + content + (node.nextSibling && !/\n$/.test(content) ? '\n' : '')
+        )
+      }
+    })
     return service
   }, [])
 
@@ -57,11 +79,27 @@ function App() {
     return result
   }, [])
 
+  // Nettoyer le HTML avant conversion (remplacer les &nbsp; par des espaces normaux)
+  const cleanHtml = useCallback((html) => {
+    if (!html) return ''
+    // Remplacer les entités &nbsp; et les caractères Unicode \u00A0 par des espaces normaux
+    return html
+      .replace(/&nbsp;/g, ' ')
+      .replace(/\u00A0/g, ' ')
+  }, [])
+
   // Conversion HTML → Markdown
   const markdownFromHtml = useMemo(() => {
     if (!htmlContent) return ''
-    return turndownService.turndown(htmlContent)
-  }, [htmlContent, turndownService])
+    const cleaned = cleanHtml(htmlContent)
+    let markdown = turndownService.turndown(cleaned)
+
+    // Post-traitement: supprimer les backslashes d'échappement inutiles
+    // Ex: "1\." → "1." (Turndown échappe les points après les numéros)
+    markdown = markdown.replace(/(\d+)\\\./g, '$1.')
+
+    return markdown
+  }, [htmlContent, turndownService, cleanHtml])
 
   // Conversion WhatsApp input → Markdown
   const markdownFromWhatsapp = useMemo(() => {
