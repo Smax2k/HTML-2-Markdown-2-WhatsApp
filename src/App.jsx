@@ -191,18 +191,18 @@ function App() {
     try {
       await navigator.clipboard.writeText(currentOutput)
     } catch (err) {
-      console.error('Erreur de copie:', err)
+      console.error('Copy error:', err)
     }
   }
 
   const getOutputPlaceholder = () => {
     switch (outputMode) {
       case 'markdown':
-        return 'Le Markdown apparaîtra ici...'
+        return 'Markdown output will appear here...'
       case 'whatsapp':
-        return 'Le format WhatsApp apparaîtra ici...'
+        return 'WhatsApp format will appear here...'
       case 'html':
-        return 'Le HTML apparaîtra ici...'
+        return 'HTML output will appear here...'
       default:
         return ''
     }
@@ -210,20 +210,20 @@ function App() {
 
   const getInputPlaceholder = () => {
     if (inputMode === 'markdown') {
-      return `Collez ou écrivez votre Markdown ici...
+      return `Paste or write your Markdown here...
 
-Exemples:
-# Titre
-**gras** et *italique*
-~~barré~~
-- liste
-[lien](url)`
+Examples:
+# Title
+**bold** and *italic*
+~~strikethrough~~
+- list
+[link](url)`
     }
-    return `Collez votre texte WhatsApp ici...
+    return `Paste your WhatsApp text here...
 
-Exemples:
-*gras* et _italique_
-~barré~
+Examples:
+*bold* and _italic_
+~strikethrough~
 \`code\``
   }
 
@@ -231,7 +231,7 @@ Exemples:
     <div className="app-container">
       <header className="app-header">
         <h1>HTML ↔ Markdown ↔ WhatsApp</h1>
-        <p>Conversion bidirectionnelle en temps réel</p>
+        <p>Real-time bidirectional conversion</p>
       </header>
 
       <main className="editor-grid">
@@ -261,8 +261,8 @@ Exemples:
                 💬 WhatsApp
               </button>
             </div>
-            <button className="clear-btn" onClick={clearAll} title="Effacer tout">
-              🗑️ Effacer
+            <button className="clear-btn" onClick={clearAll} title="Clear all">
+              🗑️ Clear
             </button>
           </div>
           <div className="editor-container">
@@ -273,7 +273,7 @@ Exemples:
                 onChange={setHtmlContent}
                 modules={modules}
                 formats={formats}
-                placeholder="Commencez à écrire ici..."
+                placeholder="Start typing here..."
               />
             ) : (
               <textarea
@@ -315,8 +315,8 @@ Exemples:
                 🌐 HTML
               </button>
             </div>
-            <button className="copy-btn" onClick={copyToClipboard} title="Copier">
-              📋 Copier
+            <button className="copy-btn" onClick={copyToClipboard} title="Copy">
+              📋 Copy
             </button>
           </div>
           <div className="output-content">
